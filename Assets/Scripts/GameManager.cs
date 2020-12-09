@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public bool timeFreeze = false;
     public int score;
     public Text scoreText;
     public bool gameOn = false;

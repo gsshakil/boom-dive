@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
-    public GameManager gm;
+    private GameManager gm;
     public float moveSpeed = 5;
     public float idleSpeed = 20f;
     public float boostSpeed = 50;
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        gm = GameObject.FindObjectOfType<GameManager>();
     }
 
     private void FixedUpdate()
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.touchCount > 0)
             {
+                gm.timeFreeze = true;
                 touch = Input.GetTouch(0);
 
                 if (touch.phase == TouchPhase.Moved)
@@ -46,6 +48,11 @@ public class PlayerController : MonoBehaviour
                     rb.position = new Vector3(rb.position.x + touch.deltaPosition.x * angularSpeed * Time.fixedDeltaTime, rb.position.y, rb.position.z);
 
                 }
+            } 
+            
+            if(touch.phase == TouchPhase.Ended)
+            {
+                gm.timeFreeze = false;
             }
         }
 

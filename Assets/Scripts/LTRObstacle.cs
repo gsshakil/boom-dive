@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Oscilator : MonoBehaviour
+public class LTRObstacle : MonoBehaviour
 {
-    public GameObject target;
-    public float speed = 10;
-
     private GameManager gm;
+    private Animator anim;
 
     private void Awake()
     {
         gm = GameObject.FindObjectOfType<GameManager>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if(gm.timeFreeze == false)
+        if(gm.timeFreeze == true)
         {
-            transform.RotateAround(target.transform.position, Vector3.up, speed * Time.deltaTime);
+            anim.speed = 0;
+        } else
+        {
+            anim.speed = 1;
         }
-
     }
 }
