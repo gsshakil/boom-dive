@@ -17,7 +17,7 @@ public class LTRObstacle : MonoBehaviour
     {
         if(gm.timeFreeze == true)
         {
-            anim.speed = 0;
+            anim.speed = 0.1f;
         } else
         {
             anim.speed = 1;

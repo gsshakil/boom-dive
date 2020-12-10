@@ -16,11 +16,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float bound = 4.5f;
     private Touch touch;
+    private Animator anim;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         gm = GameObject.FindObjectOfType<GameManager>();
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -56,5 +58,19 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+
+    public void PlayerRun()
+    {
+        anim.SetBool("PlayerRun", true);
+    }
+    public void PlayerDead()
+    {
+        anim.SetBool("PlayerDead", true);
+    }
+
+    public void PlayerDance()
+    {
+        anim.SetBool("PlayerDance", true);
     }
 }

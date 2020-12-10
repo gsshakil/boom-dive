@@ -19,6 +19,9 @@ public class Oscilator : MonoBehaviour
         if(gm.timeFreeze == false)
         {
             transform.RotateAround(target.transform.position, Vector3.up, speed * Time.deltaTime);
+        } else
+        {
+            transform.RotateAround(target.transform.position, Vector3.up, (speed/10) * Time.deltaTime);
         }
 
     }

@@ -13,6 +13,13 @@ public class GameManager : MonoBehaviour
     public GameObject levelCompleteMenu;
     public GameObject gameOverMenu;
 
+    private PlayerController player;
+
+
+    private void Awake()
+    {
+        player = GameObject.FindObjectOfType<PlayerController>();
+    }
 
     private void Update()
     {
@@ -22,11 +29,13 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameOn = true;
+        player.PlayerRun();
     }
 
     public void EndGame()
     {
         gameOn = false;
+        player.PlayerDead();
     }
 
     public void GameOver()
@@ -38,6 +47,7 @@ public class GameManager : MonoBehaviour
     public void LevelComplete()
     {
         gameOn = false;
+        player.PlayerDance();
         levelCompleteMenu.SetActive(true);
     }
 
